@@ -1,4 +1,11 @@
+/*display: grid for block level grid */
+/*display: inline-grid for inline grid */
+
+/*We can define the columns of our grid by using the CSS property grid-template-columns */
+
 .grid {
+    display: grid; 
+    /*w/o number of columns specified, every column is sitting on new rows */
     border: 2px blue solid;
     width: 400px;
     height: 500px;
