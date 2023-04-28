@@ -1,7 +1,14 @@
-/*display: grid for block level grid */
-/*display: inline-grid for inline grid */
+/* display: grid for block level grid */
+/* display: inline-grid for inline grid */
 
-/*We can define the columns of our grid by using the CSS property grid-template-columns */
+/* We can define the columns of our grid by using the CSS property grid-template-columns */
+/* This property will define each column's  width */
+
+/* To specify the number of rows of the grid, we can use the CSS property grid-template-rowq */
+/* This property will define each row's height*/
+
+/* We can use shorthand property grid-template.
+/* Values before the slash sign will defined row sizes and the values after will define column sizes */
 
 .grid {
     display: grid; 
@@ -9,6 +16,17 @@
     border: 2px blue solid;
     width: 400px;
     height: 500px;
+    /* two following code lines are equals */
+    /* grid-template-columns: 100px 200px; */
+    /* next one defines the size as a percetage of the entire grid's width*/
+    /* grid-template-columns: 25% 50%; */
+    /* next line of code will fractionnate the number of columns : */
+    /* grid-template-columns: 1fr 1fr; */
+    /* we can also define a mix of different column values */
+    /* grid-template-columns: 100px 25% 300px;
+    grid-template-rows: 200px 30% 150px; */
+    /* the following property will define a shortand (overflow is made on purpose)*/
+    grid-template: 200px 30% 150px / 100px 25% 300px;
   }
   
   .box {
