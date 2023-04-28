@@ -1,27 +1,64 @@
 /* display: grid for block level grid */
 /* display: inline-grid for inline grid */
 
+
 /* We can define the columns of our grid by using the CSS property grid-template-columns */
 /* This property will define each column's  width */
+
 
 /* To specify the number of rows of the grid, we can use the CSS property grid-template-rowq */
 /* This property will define each row's height*/
 
+
 /* We can use shorthand property grid-template.
 /* Values before the slash sign will defined row sizes and the values after will define column sizes */
 
+
 /* With "fr" mesure unit we can divide the grid into fractions (using grid-template-rows and grid-template-columns */
 /* Is is specially made to prevent grid overflow */
+
+
+
+
+/* La fonction repeat de CSS Grid permet de répéter un modèle de grille plusieurs fois. Elle peut être utilisée pour définir les colonnes et les lignes de manière plus concise.
+
+La fonction prend deux arguments : le premier spécifie le nombre de fois que le modèle doit être répété et le second spécifie le modèle lui-même. Le modèle peut être une combinaison de différentes unités de mesure telles que les pixels ou les fractions. Par exemple, repeat(3, 1fr) définit trois colonnes, chacune avec une largeur égale à une fraction de l'espace disponible.
+
+L'utilisation de repeat permet de simplifier et de raccourcir la définition de la grille, et elle peut être utilisée avec des fractions ainsi qu'avec d'autres unités de mesure. */
+
+
+
+
+/* La fonction minmax de CSS Grid permet de définir une taille minimale et maximale pour les colonnes et les lignes de la grille. Elle est très utile pour créer des grilles flexibles et adaptatives qui s'ajustent automatiquement en fonction du contenu.
+
+La fonction prend deux arguments : le premier spécifie la taille minimale de la colonne ou de la ligne, et le second spécifie la taille maximale. Par exemple, minmax(100px, 1fr) définit une colonne qui a une taille minimale de 100px et une taille maximale égale à une fraction de l'espace disponible.
+
+minmax peut être utilisée avec toutes les unités de mesure, y compris les pourcentages et les fractions. Elle peut être utilisée en combinaison avec d'autres propriétés de la grille, telles que grid-template-columns et grid-template-rows, pour créer des grilles flexibles et adaptatives qui fonctionnent bien avec différents types de contenu. */
+
+
+
+
+/* La propriété gap de CSS Grid permet de spécifier l'espace entre les colonnes et les lignes de la grille. Elle peut être utilisée pour ajouter de l'espace entre les éléments de la grille et rendre le design plus aéré.
+
+La propriété prend deux arguments : le premier spécifie l'espace entre les colonnes et le second spécifie l'espace entre les lignes. Par exemple, gap: 20px 10px ajoute un espace de 20px entre les colonnes et un espace de 10px entre les lignes.
+
+gap peut également être utilisée avec une seule valeur, par exemple gap: 20px ajoute la même quantité d'espace entre les colonnes et les lignes.
+
+La propriété gap peut être utilisée avec toutes les unités de mesure, y compris les pourcentages, les pixels et les em. Elle peut être combinée avec d'autres propriétés de la grille, telles que grid-template-columns et grid-template-rows, pour créer des designs de grille plus complexes. */
+
+
+
+
 
 .grid {
   display: grid;
   /*w/o number of columns specified, every column is sitting on new rows */
   border: 2px blue solid;
-  width: 400px;
+  /* width: 400px; */
   height: 500px;
   /* two following code lines are equals */
   /* grid-template-columns: 100px 200px; */
-  /* next one defines the size as a percetage of the entire grid's width*/
+  /* next one defines the size as a percentage of the entire grid's width*/
   /* grid-template-columns: 25% 50%; */
   /* next line of code will fractionnate the number of columns : */
   /* grid-template-columns: 1fr 1fr 1fr; */
@@ -31,7 +68,11 @@
   /* the following property will define a shortand (overflow is made on purpose)*/
   /* grid-template: 200px 30% 150px / 100px 25% 300px; */
   /* grid-template: 1fr 1fr 1fr / 1fr 2fr 1fr; */
-  grid-template-columns: repeat(3, 100px);
+  /* grid-template-columns: repeat(3, 100px); */
+  /* grid-template-rows: repeat(3, 1fr); */
+  /* grid-template: repeat(3, 1fr) / 3fr 50% 1fr; */
+  grid-template: repeat(3, 1fr) / 3fr minmax(50px, 300px) 1fr;
+  gap: 20px 10px; /* row-gap: 20px, column-gap: 10px; */
 }
 
 .box {
