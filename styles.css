@@ -1,24 +1,17 @@
 /* display: grid for block level grid */
 /* display: inline-grid for inline grid */
 
-
 /* We can define the columns of our grid by using the CSS property grid-template-columns */
 /* This property will define each column's  width */
-
 
 /* To specify the number of rows of the grid, we can use the CSS property grid-template-rowq */
 /* This property will define each row's height*/
 
-
 /* We can use shorthand property grid-template.
 /* Values before the slash sign will defined row sizes and the values after will define column sizes */
 
-
 /* With "fr" mesure unit we can divide the grid into fractions (using grid-template-rows and grid-template-columns */
 /* Is is specially made to prevent grid overflow */
-
-
-
 
 /* La fonction repeat de CSS Grid permet de répéter un modèle de grille plusieurs fois. Elle peut être utilisée pour définir les colonnes et les lignes de manière plus concise.
 
@@ -26,17 +19,11 @@ La fonction prend deux arguments : le premier spécifie le nombre de fois que le
 
 L'utilisation de repeat permet de simplifier et de raccourcir la définition de la grille, et elle peut être utilisée avec des fractions ainsi qu'avec d'autres unités de mesure. */
 
-
-
-
 /* La fonction minmax de CSS Grid permet de définir une taille minimale et maximale pour les colonnes et les lignes de la grille. Elle est très utile pour créer des grilles flexibles et adaptatives qui s'ajustent automatiquement en fonction du contenu.
 
 La fonction prend deux arguments : le premier spécifie la taille minimale de la colonne ou de la ligne, et le second spécifie la taille maximale. Par exemple, minmax(100px, 1fr) définit une colonne qui a une taille minimale de 100px et une taille maximale égale à une fraction de l'espace disponible.
 
 minmax peut être utilisée avec toutes les unités de mesure, y compris les pourcentages et les fractions. Elle peut être utilisée en combinaison avec d'autres propriétés de la grille, telles que grid-template-columns et grid-template-rows, pour créer des grilles flexibles et adaptatives qui fonctionnent bien avec différents types de contenu. */
-
-
-
 
 /* La propriété gap de CSS Grid permet de spécifier l'espace entre les colonnes et les lignes de la grille. Elle peut être utilisée pour ajouter de l'espace entre les éléments de la grille et rendre le design plus aéré.
 
@@ -46,9 +33,13 @@ gap peut également être utilisée avec une seule valeur, par exemple gap: 20px
 
 La propriété gap peut être utilisée avec toutes les unités de mesure, y compris les pourcentages, les pixels et les em. Elle peut être combinée avec d'autres propriétés de la grille, telles que grid-template-columns et grid-template-rows, pour créer des designs de grille plus complexes. */
 
+/* Les propriétés grid-row-start et grid-row-end sont utilisées en CSS Grid pour définir la position verticale d'un élément dans la grille. grid-row-start définit la ligne de départ de l'élément et grid-row-end définit la ligne de fin de l'élément. Les valeurs peuvent être des nombres entiers, des noms de lignes ou des fonctions telles que span qui permettent de définir la taille de l'élément en fonction du nombre de lignes. */
+/* On peut utiliser la propriété grid-row qui est un raccourci. La première valeur est la ligne de début et la seconde la ligne de fin*/
 
+/* La propriété grid-area en CSS Grid est un raccourci pratique pour définir la position et la taille d'un élément dans la grille. Elle permet de spécifier à la fois la position de départ et la position de fin de l'élément à la fois horizontalement et verticalement. */
+/* La première valeur définit grid-row-start, la seconde grid-column-start, la troisème grid-row-end, la quatrième grid-column-end. */
 
-
+/* La propriété CSS grid-template-areas permet de définir des zones nommées dans une grille CSS en utilisant des chaînes de caractères. Ces zones peuvent ensuite être utilisées pour positionner des éléments de la grille en utilisant la propriété grid-area. grid-template-areas est un moyen efficace de définir des mises en page de grille complexes en utilisant une syntaxe simple et intuitive. */
 
 .grid {
   display: grid;
@@ -73,6 +64,11 @@ La propriété gap peut être utilisée avec toutes les unités de mesure, y com
   /* grid-template: repeat(3, 1fr) / 3fr 50% 1fr; */
   grid-template: repeat(3, 1fr) / 3fr minmax(50px, 300px) 1fr;
   gap: 20px 10px; /* row-gap: 20px, column-gap: 10px; */
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "left right"
+    "footer footer";
 }
 
 .box {
@@ -81,3 +77,115 @@ La propriété gap peut être utilisée avec toutes les unités de mesure, y com
   border-radius: 5px;
   border: 2px dodgerblue solid;
 }
+
+.second_grid,
+.third_grid {
+  margin-top: 30px;
+}
+
+.h {
+  /* grid-row-start: 2;
+  grid-row-end: 4; */
+  /* span value means columns will occupy 2 other columns to the right */
+  grid-row: 2 / 4;
+  /* grid-column is a shorthand like grid-row */
+  grid-column: 2 / span 2;
+}
+
+.i {
+  grid-area: 1 / 1 / span 2 / span 1;
+}
+
+/* GRID AREA CSS */
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header"
+    "nav nav"
+    "left right"
+    "footer footer";
+  grid-template-columns: 200px 400px;
+  grid-template-rows: 150px 200px 600px 200px;
+  max-width: 900px;
+  position: relative;
+  padding-top: 50px;
+  margin: auto;
+  gap: 10px;
+}
+
+h1,
+h2 {
+  font-family: monospace;
+  text-align: center;
+}
+
+header {
+  grid-area: header;
+  background-color: dodgerblue;
+}
+
+nav {
+  grid-area: nav;
+  background-color: beige;
+}
+
+.left {
+  grid-area: left;
+  background-color: dodgerblue;
+}
+
+.right {
+  grid-area: right;
+  background-color: beige;
+}
+
+footer {
+  grid-area: footer;
+  background-color: dodgerblue;
+}
+/* END OF GRID AREA CSS */
+
+/* OVERLAPPING ELEMENTS */
+.container1 {
+  display: grid;
+  max-width: 900px;
+  position: relative;
+  padding-top: 50px;
+  margin: auto;
+  gap: 10px;
+  grid-template: repeat(12, 1fr) / repeat(6, 1fr);
+}
+
+h3 {
+  font-family: monospace;
+  text-align: center;
+}
+
+.header1 {
+  background-color: dodgerblue;
+  grid-area: 1 / 1 / 3 / 7;
+}
+
+.nav1 {
+  background-color: beige;
+  grid-area: 3 / 1 / 4 / 7;
+}
+
+.left1 {
+  grid-area: 4 / 1 / 9 / 5;
+  background-color: dodgerblue;
+}
+
+.right1 {
+  grid-area: 4 / 5 / 9 / 7;
+  background-color: beige;
+}
+
+.overlap1 {
+  background-color: lightcoral;
+}
+
+.footer1 {
+  background-color: dodgerblue;
+}
+/* END OF OVERLAPPING ELEMENTS */
