@@ -41,6 +41,10 @@ La propriété gap peut être utilisée avec toutes les unités de mesure, y com
 
 /* La propriété CSS grid-template-areas permet de définir des zones nommées dans une grille CSS en utilisant des chaînes de caractères. Ces zones peuvent ensuite être utilisées pour positionner des éléments de la grille en utilisant la propriété grid-area. grid-template-areas est un moyen efficace de définir des mises en page de grille complexes en utilisant une syntaxe simple et intuitive. */
 
+/* La propriété CSS grid-auto-rows définit la hauteur par défaut des lignes qui n'ont pas été explicitement définies dans la grille en utilisant grid-template-rows. Cela signifie que les lignes supplémentaires créées automatiquement dans la grille, en raison de l'ajout de nouveaux éléments, utiliseront la hauteur définie par grid-auto-rows. Cette propriété est utile pour garantir une mise en page cohérente de la grille, même lorsque des éléments sont ajoutés dynamiquement. */
+
+/* La propriété CSS grid-auto-flow définit comment les éléments ajoutés à la grille sont automatiquement placés lorsque la grille n'a pas de place pour eux. Cette propriété peut être utilisée pour contrôler le flux automatique des éléments dans la grille, en spécifiant si les nouveaux éléments doivent être placés dans les colonnes ou les lignes supplémentaires de la grille, ou s'ils doivent être placés dans des cellules adjacentes existantes. grid-auto-flow est utile pour garantir que la grille est remplie de manière optimale, même lorsque des éléments sont ajoutés dynamiquement. */
+
 .grid {
   display: grid;
   /*w/o number of columns specified, every column is sitting on new rows */
@@ -182,10 +186,13 @@ h3 {
 }
 
 .overlap1 {
+  grid-area: 6 / 4 / 8 / 6;
+  z-index: 5;
   background-color: lightcoral;
 }
 
 .footer1 {
+  grid-area: 9 / 1 / 13 / 7;
   background-color: dodgerblue;
 }
 /* END OF OVERLAPPING ELEMENTS */
